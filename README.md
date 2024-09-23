@@ -16,72 +16,27 @@ Pada Sidemenu menampilkan teks yang digunakan untuk menuju ke halaman lain, yait
 Pada halaman quiz, user akan mengerjakan lima soal yang ada kemudian akan ditampilkan skor dan username ketika sudah selesai mengerjakan soal.
 
 - State Management dengan _QuizPageState
-class _QuizPageState extends State<QuizPage> {
-  List<Question> _questions = [
-    Question('Apa ibu kota Jawa Tengah?', ['Semarang', 'Surabaya', 'Bandung'], 'Semarang'),
-    Question('Di mana letak pegunungan Himalaya?', ['Asia', 'Eropa', 'Afrika'], 'Asia'),
-    Question('Sungai terpanjang di dunia adalah?', ['Amazon', 'Nil', 'Yangtze'], 'Nil'),
-    Question('Benua terbesar di dunia adalah?', ['Asia', 'Afrika', 'Amerika'], 'Asia'),
-    Question('Pulau terbesar di Indonesia adalah?', ['Sumatra', 'Kalimantan', 'Jawa'], 'Kalimantan'),
-  ];
-  int _currentQuestionIndex = 0;
-  int _score = 0;
-  var namauser;
-}
+
+![](Sreenshot(148).png)
+
 Di dalam kelas _QuizPageState, kita menyimpan daftar pertanyaan dalam variabel _questions, dan beberapa variabel seperti _currentQuestionIndex untuk melacak indeks pertanyaan saat ini, dan _score untuk menyimpan skor pengguna. namauser menyimpan nama pengguna yang akan diambil dari SharedPreferences.
 
 - Memuat nama pengguna dengan _loadUsername
-  void _loadUsername() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    namauser = prefs.getString('username');
-    setState(() {});
-  }
-  Fungsi _loadUsername digunakan untuk mengambil nama pengguna yang telah disimpan sebelumnya di SharedPreferences.
+  
+![](Sreenshot(149).png)
+
+Fungsi _loadUsername digunakan untuk mengambil nama pengguna yang telah disimpan sebelumnya di SharedPreferences.
 
 - Method _answerQuestion
-void _answerQuestion(String answer) {
-  if (_questions[_currentQuestionIndex].correctAnswer == answer) {
-    setState(() {
-      _score++;
-    });
-  }
 
-  setState(() {
-    _currentQuestionIndex++;
-  });
+![](Sreenshot(150).png)
 
-  if (_currentQuestionIndex >= _questions.length) {
-    _showResult();
-  }
-}
 Metode _answerQuestion memeriksa apakah jawaban yang diberikan benar. Jika benar, skor ditambah satu. Kemudian, indeks pertanyaan diperbarui, dan jika semua pertanyaan telah dijawab, hasil kuis ditampilkan.
 
 - Method _showResult
-void _showResult() {
-  _loadUsername();
-  showDialog(
-    context: context,
-    builder: (ctx) => AlertDialog(
-      title: Text('Quiz Finished'),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text('Your score: $_score/${_questions.length}'),
-          Text('Username: $namauser'),
-        ],
-      ),
-      actions: [
-        TextButton(
-          onPressed: () {
-            Navigator.pop(ctx);
-            Navigator.pop(context);
-          },
-          child: Text('Go to Home'),
-        ),
-      ],
-    ),
-  );
-}
+
+![](Sreenshot(151).png)
+
 Metode _showResult menampilkan dialog hasil kuis setelah semua pertanyaan dijawab. Ini menunjukkan skor dan nama pengguna, serta tombol untuk kembali ke halaman sebelumnya.
 
 # Sreenshot
