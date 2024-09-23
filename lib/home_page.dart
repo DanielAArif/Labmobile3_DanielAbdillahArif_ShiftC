@@ -1,38 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:labmobile3/sidemenu.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:labmobile3/quiz_page.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  // ignore: prefer_typing_uninitialized_variables
-  var namauser;
-
-  void _loadUsername() async {
-    // Inisialisasi SharedPreferences
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    // Ambil username yang sudah tersimpan
-    namauser = prefs.getString('username');
-    setState(() {});
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    _loadUsername();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: Text('Home Page'),
       ),
+      drawer: SideMenu(),  // Menambahkan SideMenu
       body: Center(
-        child: Text('Ini adalah halaman User $namauser'),
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => QuizPage()),
+            );
+          },
+          child: Text('Start Quiz'),
+        ),
       ),
-      drawer: const Sidemenu(),
     );
   }
 }

@@ -13,8 +13,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  // ignore: prefer_typing_uninitialized_variables
-  var namauser;
 
   void _saveUsername() async {
     // Inisialisasi SharedPreferences
@@ -24,12 +22,22 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _showInput(namacontroller, placeholder, isPassword) {
-    return TextField(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      child: TextField(
         controller: namacontroller,
         obscureText: isPassword,
         decoration: InputDecoration(
           hintText: placeholder,
-        ));
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          filled: true,
+          fillColor: Colors.grey[200],
+          contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        ),
+      ),
+    );
   }
 
   _showDialog(pesan, alamat) {
@@ -61,26 +69,42 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _showInput(_usernameController, 'Username', false),
-            _showInput(_passwordController, 'Password', true),
-            ElevatedButton(
-              child: const Text('Login'),
-              onPressed: () {
-                if (_usernameController.text == 'admin' &&
-                    _passwordController.text == 'admin') {
-                  _saveUsername();
-                  _showDialog('Anda Berhasil Login', const HomePage());
-                } else {
-                  _showDialog('Username dan Password Salah', const LoginPage());
-                }
-              },
+      body: Center(
+        child: Card(
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          margin: const EdgeInsets.all(20),
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                _showInput(_usernameController, 'Username', false),
+                _showInput(_passwordController, 'Password', true),
+                SizedBox(height: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text('Login'),
+                  onPressed: () {
+                    if (_usernameController.text == 'Arifin' &&
+                        _passwordController.text == 'user123') {
+                      _saveUsername();
+                      _showDialog('Anda Berhasil Login', HomePage());
+                    } else {
+                      _showDialog('Username dan Password Salah', const LoginPage());
+                    }
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

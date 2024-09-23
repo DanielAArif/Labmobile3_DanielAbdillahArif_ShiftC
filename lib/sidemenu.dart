@@ -1,39 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:labmobile3/home_page.dart';
-import 'package:labmobile3/about_page.dart';
+import 'package:labmobile3/quiz_page.dart';
 
-class Sidemenu extends StatelessWidget {
-  const Sidemenu({Key? key}) : super(key: key);
-
+class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: [
-          const DrawerHeader(
-            child: Text('Sidemenu'),
+          DrawerHeader(
+            child: Text(
+              'Menu',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
           ),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
+            leading: Icon(Icons.home),
+            title: Text('Home'),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ),
+                MaterialPageRoute(builder: (context) => HomePage()),
               );
             },
           ),
           ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About'),
+            leading: Icon(Icons.quiz),
+            title: Text('Start Quiz'),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const AboutPage(),
-                ),
+                MaterialPageRoute(builder: (context) => QuizPage()),
               );
             },
           ),
