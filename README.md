@@ -86,12 +86,21 @@ Metode _showResult menampilkan dialog hasil kuis setelah semua pertanyaan dijawa
 
 # Sreenshot
 Halaman Login:
+
 ![Halaman Login](login.png)
+
 Halaman Home Page:
+
 ![Halaman Home Page](home.png)
+
 Side Menu:
+
 ![Side Menu](sidemenu.png)
+
 Halaman Quiz:
+
 ![Halaman Quiz](quiz.png)
+
 Pop up Hasil Quiz:
+
 ![Pop up Hasil Quiz](quiz_result.png)
