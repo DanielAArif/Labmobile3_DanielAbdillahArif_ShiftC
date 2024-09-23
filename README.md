@@ -17,25 +17,25 @@ Pada halaman quiz, user akan mengerjakan lima soal yang ada kemudian akan ditamp
 
 - State Management dengan _QuizPageState
 
-![](Sreenshot(148).png)
+![](Screenshot(148).png)
 
 Di dalam kelas _QuizPageState, kita menyimpan daftar pertanyaan dalam variabel _questions, dan beberapa variabel seperti _currentQuestionIndex untuk melacak indeks pertanyaan saat ini, dan _score untuk menyimpan skor pengguna. namauser menyimpan nama pengguna yang akan diambil dari SharedPreferences.
 
 - Memuat nama pengguna dengan _loadUsername
   
-![](Sreenshot(149).png)
+![](Screenshot(149).png)
 
 Fungsi _loadUsername digunakan untuk mengambil nama pengguna yang telah disimpan sebelumnya di SharedPreferences.
 
 - Method _answerQuestion
 
-![](Sreenshot(150).png)
+![](Screenshot(150).png)
 
 Metode _answerQuestion memeriksa apakah jawaban yang diberikan benar. Jika benar, skor ditambah satu. Kemudian, indeks pertanyaan diperbarui, dan jika semua pertanyaan telah dijawab, hasil kuis ditampilkan.
 
 - Method _showResult
 
-![](Sreenshot(151).png)
+![](Screenshot(151).png)
 
 Metode _showResult menampilkan dialog hasil kuis setelah semua pertanyaan dijawab. Ini menunjukkan skor dan nama pengguna, serta tombol untuk kembali ke halaman sebelumnya.
 
